@@ -1,0 +1,15 @@
+/*
+ * display: flex; の拡張用
+ * @include flex(center, center); で上下左右真ん中に配置
+ */
+@mixin flex($justify-content: unset, $align-items: unset) {
+  display: -webkit-box;
+  display: flex;
+  display: -ms-flexbox;
+  justify-content: $justify-content;
+  -webkit-box-pack: $justify-content;
+  -ms-flex-pack: $justify-content;
+  align-items: $align-items;
+  -webkit-box-align: $align-items;
+  -ms-flex-align: $align-items;
+}
