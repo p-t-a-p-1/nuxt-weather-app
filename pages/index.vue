@@ -68,4 +68,45 @@ export default {}
 .c-card {
   width: 85%;
 }
+.c-card_main {
+  display: flex;
+  justify-content: space-around;
+  &_right {
+    display: flex;
+    align-items: center;
+  }
+  &_temp {
+    font-size: 5.5rem;
+  }
+  &_weather {
+    font-size: 2.4rem;
+  }
+  &_area {
+    font-size: 3.5rem;
+  }
+}
+.c-card_week {
+  margin-block-start: 40px;
+  display: flex;
+  justify-content: space-around;
+}
+.c-card_date {
+  font-size: 2rem;
+  &_day {
+    padding-block-end: 1rem;
+  }
+  &_icon {
+    font-size: 5rem;
+    padding-block-end: 1rem;
+  }
+  &_weather {
+    padding-block-end: 1rem;
+  }
+  &_temp {
+    padding-block-end: 1rem;
+    span {
+      font-size: 2.4rem;
+    }
+  }
+}
 </style>
