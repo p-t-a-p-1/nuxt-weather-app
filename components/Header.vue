@@ -20,6 +20,10 @@
 .c-header {
   // TODO mixinが使えない
   // @include flex(center, center);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50px;
   border-bottom: 1px solid #2b254d;
   &_logo {
     font-size: 20px;

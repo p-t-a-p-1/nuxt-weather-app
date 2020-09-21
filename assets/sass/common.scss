@@ -49,6 +49,11 @@ html {
 body {
   background-color: $color-bg;
 }
+ul,
+li {
+  margin: 0;
+  padding: 0;
+}
 
 ul {
   list-style-type: none;

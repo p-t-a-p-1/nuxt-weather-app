@@ -20,14 +20,14 @@
         </li>
         <li class="c-card_date">
           <p class="c-card_date_day">TUE</p>
-          <font-awesome-icon icon="sun" class="c-card_date_icon" />
+          <font-awesome-icon icon="cloud" class="c-card_date_icon" />
           <p class="c-card_date_weather">SUNNY</p>
           <p class="c-card_date_temp">High<span>18°</span></p>
           <p class="c-card_date_temp">Low<span>18°</span></p>
         </li>
         <li class="c-card_date">
           <p class="c-card_date_day">WED</p>
-          <font-awesome-icon icon="sun" class="c-card_date_icon" />
+          <font-awesome-icon icon="umbrella" class="c-card_date_icon" />
           <p class="c-card_date_weather">SUNNY</p>
           <p class="c-card_date_temp">High<span>18°</span></p>
           <p class="c-card_date_temp">Low<span>18°</span></p>
@@ -63,5 +63,9 @@ export default {}
   justify-content: center;
   align-items: center;
   text-align: center;
+}
+
+.c-card {
+  width: 85%;
 }
 </style>
