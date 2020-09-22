@@ -6,9 +6,12 @@ Using [OpenWeatherMap's Free Plan API](https://openweathermap.org/).
 
 ![IMG_5911-min](https://user-images.githubusercontent.com/51960141/93223848-75708c80-f7ab-11ea-96d9-ddd3ccd97aa0.png)
 
+# In Process
 
+## 2020/09/22
+![image](https://user-images.githubusercontent.com/51960141/93899240-1375d100-fd2f-11ea-8945-d054e52977ff.png)
 
-## Build Setup
+# Build Setup
 
 ```bash
 # install dependencies
