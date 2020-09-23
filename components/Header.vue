@@ -24,9 +24,10 @@
   align-items: center;
   justify-content: center;
   height: 50px;
-  border-bottom: 1px solid #2b254d;
   &_logo {
-    font-size: 20px;
+    font-size: 3rem;
+    font-weight: bold;
+    color: #333;
   }
 }
 </style>
