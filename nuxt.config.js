@@ -1,3 +1,5 @@
+require('dotenv').config();
+const { WEATHER_API_KEY } = process.env;
 export default {
   /*
    ** Nuxt rendering mode
@@ -78,5 +80,8 @@ export default {
       //   icons: ['fab']
       // },
     ]
+  },
+  env: {
+    WEATHER_API_KEY
   }
 }

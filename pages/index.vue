@@ -1,5 +1,6 @@
 <template>
   <div class="c-contents">
+    <pre>{{ result }}</pre>
     <div class="c-card">
       <div class="c-card_main">
         <div class="c-card_main_left">
@@ -52,7 +53,18 @@
 </template>
 
 <script>
-export default {}
+export default {
+  async asyncData({ params, $axios }) {
+    // ${params.name}
+    await $axios
+      .$get(
+        `https://api.openweathermap.org/data/2.5/weather?q=Sapporo-shi,jp&units=metric&lang=ja&appid=${process.env.WEATHER_API_KEY}`
+      )
+      .then((result) => {
+        console.log(result)
+      })
+  },
+}
 </script>
 
 <style lang="scss">
