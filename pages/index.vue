@@ -55,14 +55,20 @@
 <script>
 export default {
   async asyncData({ params, $axios }) {
-    // ${params.name}
-    await $axios
-      .$get(
-        `https://api.openweathermap.org/data/2.5/weather?q=Sapporo-shi,jp&units=metric&lang=ja&appid=${process.env.WEATHER_API_KEY}`
-      )
-      .then((result) => {
-        console.log(result)
+    try {
+      await $axios
+        .$get(
+          `https://api.openweathermap.org/data/2.5/weather?q=Sapporo,jp&units=metric&lang=ja&appid=${process.env.WEATHER_API_KEY}`
+        )
+        .then((result) => {
+          console.log(result)
+        })
+    } catch (error) {
+      error({
+        statusCode: error.response.status,
+        message: error.response.data.message,
       })
+    }
   },
 }
 </script>
