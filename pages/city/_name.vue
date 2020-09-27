@@ -3,11 +3,13 @@
     <div class="c-card">
       <div class="c-card_main">
         <div class="c-card_main_left">
-          <p class="c-card_main_temp">{{ response.main.temp }}°</p>
-          <p class="c-card_main_weather">{{ response.weather[0].main }}</p>
+          <p class="c-card_main_temp">{{ nowData.main.temp }}°</p>
+          <p class="c-card_main_weather">
+            {{ nowData.weather[0].description }}
+          </p>
         </div>
         <div class="c-card_main_right">
-          <p class="c-card_main_area">{{ response.name }}</p>
+          <p class="c-card_main_area">{{ nowData.name }}</p>
         </div>
       </div>
       <ul class="c-card_week">
@@ -55,17 +57,19 @@
 export default {
   async asyncData({ params, error, $axios }) {
     try {
-      let response = ''
+      let nowData = ''
+      // OpenWeatherMapApiのベース
+      const baseUrl = 'https://api.openweathermap.org/data/2.5/'
       await $axios
         .$get(
-          `https://api.openweathermap.org/data/2.5/weather?q=${params.name},jp&units=metric&lang=en&appid=${process.env.WEATHER_API_KEY}`
+          `${baseUrl}weather?q=${params.name},jp&units=metric&lang=ja&appid=${process.env.WEATHER_API_KEY}`
         )
-        .then((result) => {
-          console.info(result)
-          response = result
+        .then((nowDataResult) => {
+          console.info(nowDataResult)
+          nowData = nowDataResult
         })
       return {
-        response,
+        nowData,
       }
     } catch (error) {
       error({
