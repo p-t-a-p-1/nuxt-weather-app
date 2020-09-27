@@ -58,6 +58,7 @@ export default {
   async asyncData({ params, error, $axios }) {
     try {
       let nowData = ''
+      let fiveDayData = ''
       // OpenWeatherMapApiのベース
       const baseUrl = 'https://api.openweathermap.org/data/2.5/'
       await $axios
@@ -65,11 +66,20 @@ export default {
           `${baseUrl}weather?q=${params.name},jp&units=metric&lang=ja&appid=${process.env.WEATHER_API_KEY}`
         )
         .then((nowDataResult) => {
-          console.info(nowDataResult)
           nowData = nowDataResult
+        })
+
+      await $axios
+        .$get(
+          `${baseUrl}forecast?q=${params.name},jp&units=metric&lang=ja&appid=${process.env.WEATHER_API_KEY}`
+        )
+        .then((fiveDayResult) => {
+          console.log(fiveDayResult)
+          fiveDayData = fiveDayResult
         })
       return {
         nowData,
+        fiveDayData,
       }
     } catch (error) {
       error({
