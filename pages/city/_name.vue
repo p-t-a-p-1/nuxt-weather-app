@@ -13,6 +13,13 @@
         </div>
       </div>
       <ul class="c-card_week">
+        <li
+          v-for="(day, index) in fiveDayData.list"
+          :key="index"
+          class="c-card_date"
+        >
+          <pre>{{ day }}</pre>
+        </li>
         <li class="c-card_date">
           <p class="c-card_date_day">MON</p>
           <font-awesome-icon icon="sun" class="c-card_date_icon" />
@@ -75,6 +82,8 @@ export default {
         )
         .then((fiveDayResult) => {
           console.log(fiveDayResult)
+          // TODO dt_txtの時間が12のみのものを結果として出力
+          // 現在は5日間の３時間ごとの全てを取得している
           fiveDayData = fiveDayResult
         })
       return {
