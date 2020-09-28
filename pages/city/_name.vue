@@ -14,46 +14,16 @@
       </div>
       <ul class="c-card_week">
         <li
-          v-for="(day, index) in fiveDayData.list"
+          v-for="(day, index) in fiveDayData"
           :key="index"
           class="c-card_date"
         >
-          <pre>{{ day }}</pre>
-        </li>
-        <li class="c-card_date">
-          <p class="c-card_date_day">MON</p>
+          <p class="c-card_date_day">{{ day.dt_txt }}</p>
           <font-awesome-icon icon="sun" class="c-card_date_icon" />
-          <p class="c-card_date_weather">SUNNY</p>
-          <p class="c-card_date_temp">High<span>18°</span></p>
-          <p class="c-card_date_temp">Low<span>18°</span></p>
-        </li>
-        <li class="c-card_date">
-          <p class="c-card_date_day">TUE</p>
-          <font-awesome-icon icon="cloud" class="c-card_date_icon" />
-          <p class="c-card_date_weather">SUNNY</p>
-          <p class="c-card_date_temp">High<span>18°</span></p>
-          <p class="c-card_date_temp">Low<span>18°</span></p>
-        </li>
-        <li class="c-card_date">
-          <p class="c-card_date_day">WED</p>
-          <font-awesome-icon icon="umbrella" class="c-card_date_icon" />
-          <p class="c-card_date_weather">SUNNY</p>
-          <p class="c-card_date_temp">High<span>18°</span></p>
-          <p class="c-card_date_temp">Low<span>18°</span></p>
-        </li>
-        <li class="c-card_date">
-          <p class="c-card_date_day">THU</p>
-          <font-awesome-icon icon="sun" class="c-card_date_icon" />
-          <p class="c-card_date_weather">SUNNY</p>
-          <p class="c-card_date_temp">High<span>18°</span></p>
-          <p class="c-card_date_temp">Low<span>18°</span></p>
-        </li>
-        <li class="c-card_date">
-          <p class="c-card_date_day">FRI</p>
-          <font-awesome-icon icon="sun" class="c-card_date_icon" />
-          <p class="c-card_date_weather">SUNNY</p>
-          <p class="c-card_date_temp">High<span>18°</span></p>
-          <p class="c-card_date_temp">Low<span>18°</span></p>
+          <p class="c-card_date_weather">{{ day.weather[0].description }}</p>
+          <p class="c-card_date_temp">
+            気温<span>{{ day.main.temp }}°</span>
+          </p>
         </li>
       </ul>
     </div>
@@ -64,8 +34,8 @@
 export default {
   async asyncData({ params, error, $axios }) {
     try {
-      let nowData = ''
-      let fiveDayData = ''
+      let nowData = []
+      const fiveDayData = []
       // OpenWeatherMapApiのベース
       const baseUrl = 'https://api.openweathermap.org/data/2.5/'
       await $axios
@@ -81,10 +51,14 @@ export default {
           `${baseUrl}forecast?q=${params.name},jp&units=metric&lang=ja&appid=${process.env.WEATHER_API_KEY}`
         )
         .then((fiveDayResult) => {
-          console.log(fiveDayResult)
-          // TODO dt_txtの時間が12のみのものを結果として出力
-          // 現在は5日間の３時間ごとの全てを取得している
-          fiveDayData = fiveDayResult
+          fiveDayResult.list.forEach((data) => {
+            const checkedTime = data.dt_txt
+            // 12時の天気情報のみ表示
+            if (checkedTime.match(/ 12:/)) {
+              console.log(data)
+              fiveDayData.push(data)
+            }
+          })
         })
       return {
         nowData,
