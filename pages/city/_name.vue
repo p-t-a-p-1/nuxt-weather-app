@@ -19,7 +19,7 @@
           class="c-card_date"
         >
           <p class="c-card_date_day">{{ day.dt_txt }}</p>
-          <font-awesome-icon icon="sun" class="c-card_date_icon" />
+          <font-awesome-icon :icon="day.icon" class="c-card_date_icon" />
           <p class="c-card_date_weather">{{ day.weather[0].description }}</p>
           <p class="c-card_date_temp">
             気温<span>{{ day.main.temp }}°</span>
@@ -54,10 +54,19 @@ export default {
           fiveDayResult.list.forEach((data) => {
             const checkedTime = data.dt_txt
             // 12時の天気情報のみ表示
-            if (checkedTime.match(/ 12:/)) {
-              console.log(data)
-              fiveDayData.push(data)
+            if (!checkedTime.match(/ 12:/)) {
+              return
             }
+            if (data.weather[0].main === 'Rain') {
+              data.icon = 'umbrella'
+            } else if (data.weather[0].main === 'Clouds') {
+              data.icon = 'cloud'
+            } else if (data.weather[0].main === 'Sunny') {
+              data.icon = 'sun'
+            }
+
+            console.log(data)
+            fiveDayData.push(data)
           })
         })
       return {
