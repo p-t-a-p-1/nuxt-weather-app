@@ -18,11 +18,14 @@
           :key="index"
           class="c-card_date"
         >
-          <p class="c-card_date_day">{{ day.dt_txt }}</p>
+          <p class="c-card_date_day">
+            {{ day.dt_txt }}
+            <span class="c-card_date_str">{{ day.weekDay }}</span>
+          </p>
           <font-awesome-icon :icon="day.icon" class="c-card_date_icon" />
           <p class="c-card_date_weather">{{ day.weather[0].description }}</p>
           <p class="c-card_date_temp">
-            気温<span>{{ day.main.temp }}°</span>
+            気温<span class="c-card_date_number">{{ day.main.temp }}°</span>
           </p>
         </li>
       </ul>
@@ -53,10 +56,19 @@ export default {
         .then((fiveDayResult) => {
           fiveDayResult.list.forEach((data) => {
             const checkedTime = data.dt_txt
+            const weekDay = ['日', '月', '火', '水', '木', '金', '土']
+
             // 12時の天気情報のみ表示
             if (!checkedTime.match(/ 12:/)) {
               return
+            } else {
+              // 曜日取得
+              const thisDay = new Date(checkedTime)
+              data.weekDay = weekDay[thisDay.getDay()]
+              // 2020-09-29 12:00:00 から時間以降削除
+              data.dt_txt = data.dt_txt.split(' ')[0]
             }
+            // 天気アイコンの表示
             if (data.weather[0].main === 'Rain') {
               data.icon = 'umbrella'
             } else if (data.weather[0].main === 'Clouds') {
@@ -64,8 +76,6 @@ export default {
             } else if (data.weather[0].main === 'Sunny') {
               data.icon = 'sun'
             }
-
-            console.log(data)
             fiveDayData.push(data)
           })
         })
@@ -123,6 +133,9 @@ export default {
   &_day {
     padding-block-end: 1rem;
   }
+  &_str {
+    display: block;
+  }
   &_icon {
     font-size: 5rem;
     padding-block-end: 1rem;
@@ -135,6 +148,9 @@ export default {
     span {
       font-size: 2.4rem;
     }
+  }
+  &_number {
+    margin-left: 10px;
   }
 }
 </style>
