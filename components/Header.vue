@@ -23,9 +23,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 50px;
+  height: 80px;
   &_logo {
-    font-size: 3rem;
+    font-size: 4.5rem;
     font-weight: bold;
     color: #333;
   }

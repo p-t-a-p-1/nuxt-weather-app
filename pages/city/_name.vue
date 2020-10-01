@@ -69,7 +69,7 @@ export default {
               data.icon = 'umbrella'
             } else if (data.weather[0].main === 'Clouds') {
               data.icon = 'cloud'
-            } else if (data.weather[0].main === 'Sunny') {
+            } else if (data.weather[0].main === 'Clear') {
               data.icon = 'sun'
             }
             fiveDayData.push(data)
@@ -93,11 +93,10 @@ export default {
 .c {
   &-main {
     &_content {
-      margin: 0 auto;
+      margin: 100px auto 0;
       min-height: 100vh;
       display: flex;
       justify-content: center;
-      align-items: center;
       text-align: center;
       &_card {
         width: 85%;
