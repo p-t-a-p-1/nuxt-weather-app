@@ -28,6 +28,9 @@
     font-size: 4.5rem;
     font-weight: bold;
     color: #333;
+    &:hover {
+      opacity: 0.8;
+    }
   }
 }
 </style>

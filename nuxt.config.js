@@ -83,5 +83,5 @@ export default {
   },
   env: {
     WEATHER_API_KEY
-  }
+  },
 }

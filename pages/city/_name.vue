@@ -79,10 +79,10 @@ export default {
         nowData,
         fiveDayData,
       }
-    } catch (error) {
+    } catch (err) {
       error({
-        statusCode: error.response.status,
-        message: error.response.data.message,
+        statusCode: err.response.status,
+        message: err.response.data.message,
       })
     }
   },
