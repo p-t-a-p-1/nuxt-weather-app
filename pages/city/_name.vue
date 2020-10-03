@@ -1,19 +1,23 @@
 <template>
   <div class="c-main_content">
-    <div class="c-main_content_card">
-      <div class="c-main_content_card_main">
-        <div class="-left">
+    <div class="c-card">
+      <div class="c-card_main">
+        <div class="c-card_main_left">
           <p class="-temp">{{ nowData.main.temp }}°</p>
           <p class="-weather">
             {{ nowData.weather[0].description }}
           </p>
         </div>
-        <div class="-right">
+        <div class="c-card_main_right">
           <p class="-area">{{ nowData.name }}</p>
         </div>
       </div>
-      <ul class="c-main_content_card_week">
-        <li v-for="(day, index) in fiveDayData" :key="index" class="-date">
+      <ul class="c-card_week">
+        <li
+          v-for="(day, index) in fiveDayData"
+          :key="index"
+          class="c-card_week_date"
+        >
           <p class="-day">
             {{ day.dt_txt }}
             <span class="-str">{{ day.weekDay }}</span>
@@ -98,54 +102,56 @@ export default {
       display: flex;
       justify-content: center;
       text-align: center;
-      &_card {
-        width: 85%;
-        &_main {
-          display: flex;
-          justify-content: space-around;
-          .-right {
-            display: flex;
-            align-items: center;
-          }
-          .-temp {
-            font-size: 5.5rem;
-          }
-          .-weather {
+    }
+  }
+  &-card {
+    width: 85%;
+    &_main {
+      display: flex;
+      justify-content: space-around;
+      &_left {
+        .-temp {
+          font-size: 5.5rem;
+        }
+        .-weather {
+          font-size: 2.4rem;
+        }
+      }
+      &_right {
+        display: flex;
+        align-items: center;
+        .-area {
+          font-size: 3.5rem;
+        }
+      }
+    }
+    &_week {
+      margin-block-start: 40px;
+      display: flex;
+      justify-content: space-around;
+      &_date {
+        font-size: 2rem;
+        .-day {
+          padding-block-end: 1rem;
+        }
+        .-str {
+          display: block;
+        }
+        .-icon {
+          font-size: 5rem;
+          padding-block-end: 1rem;
+        }
+        .-weather {
+          padding-block-end: 1rem;
+        }
+        .-temp {
+          padding-block-end: 1rem;
+          span {
             font-size: 2.4rem;
           }
-          .-area {
-            font-size: 3.5rem;
-          }
         }
-        &_week {
-          margin-block-start: 40px;
-          display: flex;
-          justify-content: space-around;
-          .-date {
-            font-size: 2rem;
-          }
-          .-day {
-            padding-block-end: 1rem;
-          }
-          .-str {
-            display: block;
-          }
-          .-icon {
-            font-size: 5rem;
-            padding-block-end: 1rem;
-          }
-          .-weather {
-            padding-block-end: 1rem;
-          }
-          .-temp {
-            padding-block-end: 1rem;
-            span {
-              font-size: 2.4rem;
-            }
-          }
-          .-number {
-            margin-left: 10px;
-          }
+        .-number {
+          margin-left: 10px;
         }
       }
     }
