@@ -8,8 +8,8 @@ Using [OpenWeatherMap's Free Plan API](https://openweathermap.org/).
 
 # In Process
 
-## 2020/09/29
-![image](https://user-images.githubusercontent.com/51960141/94519935-62a78e80-0266-11eb-8a9c-14d74d9d5d2e.png)
+## 2020/10/04
+![rain-demo](https://user-images.githubusercontent.com/51960141/95017708-ef52b200-0695-11eb-8412-86fcf74f71b0.gif)
 
 # Build Setup
 
