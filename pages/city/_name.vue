@@ -43,6 +43,14 @@
       <div></div>
       <div></div>
       <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
     </div>
   </div>
 </template>
@@ -111,62 +119,23 @@ export default {
 .c {
   &-main {
     &_content {
-      margin: 0 auto;
-      height: 800px;
+      margin: 100px auto;
+      height: 550px;
       display: flex;
       justify-content: center;
       text-align: center;
       position: relative;
     }
   }
-  &-rain {
-    $rain_drop_height: 20px;
-    background-color: #102030;
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    z-index: 5;
-    div {
-      position: absolute;
-      background-color: rgba(#fff, 0.3);
-      top: -$rain_drop_height;
-      left: 0;
-      width: 1px;
-      height: $rain_drop_height;
-      transform-origin: center center;
-      // アニメーションの名前（keyframes）
-      animation-name: rain;
-      // アニメーションが始まって終わるまでの時間
-      animation-duration: 500ms;
-      // 変化の度合い（linearは開始から終了まで一定）
-      animation-timing-function: linear;
-      // アニメーションの繰り返し回数（infiniteは無限）
-      animation-iteration-count: infinite;
-    }
-    @for $i from 1 through 12 {
-      & > div:nth-of-type(#{$i}) {
-        // アニメーションが始まる時間を少しずつずらす
-        animation-delay: #{$i * 100}ms;
-        // 一つずつの雨粒の時間をランダムに
-        // 後ろの数値を大きい数字にするほど緩やかな雨粒になる
-        animation-duration: random(100) + 600ms;
-        left: random(100) + px;
-      }
-    }
-    @keyframes rain {
-      from {
-        transform: rotate(-5deg) translateY(-$rain_drop_height);
-      }
-      to {
-        transform: rotate(-5deg) translateY(100px + $rain_drop_height);
-      }
-    }
-  }
   &-card {
-    padding: 50px 0;
+    padding: 100px 0;
     width: 85%;
     position: absolute;
+    top: 0;
+    bottom: 0;
+    margin: 0;
     z-index: 10;
+    color: #fff;
     &_main {
       display: flex;
       justify-content: space-around;
@@ -214,6 +183,50 @@ export default {
         .-number {
           margin-left: 10px;
         }
+      }
+    }
+  }
+  &-rain {
+    $rain_drop_height: 50px;
+    background-color: #102030;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 5;
+    border-radius: 20px;
+    div {
+      position: absolute;
+      background-color: rgba(#fff, 0.3);
+      top: -$rain_drop_height;
+      left: 0;
+      width: 1px;
+      height: $rain_drop_height;
+      transform-origin: center center;
+      // アニメーションの名前（keyframes）
+      animation-name: rain;
+      // アニメーションが始まって終わるまでの時間
+      animation-duration: 500ms;
+      // 変化の度合い（linearは開始から終了まで一定）
+      animation-timing-function: linear;
+      // アニメーションの繰り返し回数（infiniteは無限）
+      animation-iteration-count: infinite;
+    }
+    @for $i from 1 through 20 {
+      & > div:nth-of-type(#{$i}) {
+        // アニメーションが始まる時間を少しずつずらす
+        animation-delay: #{$i * 100}ms;
+        // 一つずつの雨粒の時間をランダムに
+        // 後ろの数値を大きい数字にするほど緩やかな雨粒になる
+        animation-duration: random(100) + 800ms;
+        left: random(100) + vw;
+      }
+    }
+    @keyframes rain {
+      from {
+        transform: rotate(-15deg) translateY(-$rain_drop_height);
+      }
+      to {
+        transform: rotate(-20deg) translateY(500px + $rain_drop_height);
       }
     }
   }
