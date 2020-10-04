@@ -1,6 +1,6 @@
 <template>
   <div class="c-main_content">
-    <div class="c-card">
+    <div class="c-card" :class="weatherName">
       <div class="c-card_main">
         <div class="c-card_main_left">
           <p class="-temp">{{ nowData.main.temp }}°</p>
@@ -30,7 +30,7 @@
         </li>
       </ul>
     </div>
-    <div class="c-rain">
+    <div v-if="weatherName === 'rain'" class="c-rain">
       <div></div>
       <div></div>
       <div></div>
@@ -61,6 +61,7 @@ export default {
     try {
       let nowData = []
       const fiveDayData = []
+      let weatherName = ''
       // OpenWeatherMapApiのベース
       const baseUrl = 'https://api.openweathermap.org/data/2.5/'
       await $axios
@@ -69,6 +70,8 @@ export default {
         )
         .then((nowDataResult) => {
           nowData = nowDataResult
+          weatherName = nowDataResult.weather[0].main.toLowerCase()
+          console.log(weatherName)
         })
 
       await $axios
@@ -104,6 +107,7 @@ export default {
       return {
         nowData,
         fiveDayData,
+        weatherName,
       }
     } catch (err) {
       error({
@@ -135,7 +139,9 @@ export default {
     bottom: 0;
     margin: 0;
     z-index: 10;
-    color: #fff;
+    &.rain {
+      color: #fff;
+    }
     &_main {
       display: flex;
       justify-content: space-around;
