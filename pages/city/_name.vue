@@ -30,6 +30,10 @@
         </li>
       </ul>
     </div>
+    <div v-if="weatherName === 'clouds'" class="c-clouds">
+      <div class="c-clouds_first"></div>
+      <div class="c-clouds_second"></div>
+    </div>
     <div v-if="weatherName === 'rain'" class="c-rain">
       <div></div>
       <div></div>
@@ -138,10 +142,10 @@ export default {
     top: 0;
     bottom: 0;
     margin: 0;
-    z-index: 10;
-    &.rain {
-      color: #fff;
-    }
+    z-index: 5;
+    color: #fff;
+    background-color: #102030;
+    border-radius: 20px;
     &_main {
       display: flex;
       justify-content: space-around;
@@ -192,14 +196,37 @@ export default {
       }
     }
   }
+  &-clouds {
+    width: 85%;
+    height: 100%;
+    position: absolute;
+    z-index: 10;
+    div {
+      width: 100%;
+      height: 100%;
+      background-size: cover;
+      margin: auto;
+      border-radius: 20px;
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      margin: auto;
+    }
+    &_first {
+      background-image: url(~assets/img/cloud01.png);
+    }
+    &_second {
+      background-image: url(~assets/img/cloud02.png);
+    }
+  }
   &-rain {
     $rain_drop_height: 50px;
-    background-color: #102030;
     width: 100%;
     height: 100%;
     position: absolute;
-    z-index: 5;
-    border-radius: 20px;
+    z-index: 10;
     div {
       position: absolute;
       background-color: rgba(#fff, 0.3);
