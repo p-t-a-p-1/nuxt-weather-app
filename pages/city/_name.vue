@@ -31,8 +31,12 @@
       </ul>
     </div>
     <div v-if="weatherName === 'clouds'" class="c-clouds">
-      <div class="c-clouds_first"></div>
-      <div class="c-clouds_second"></div>
+      <figure class="c-clouds_first">
+        <img src="~assets/img/cloud01.png" />
+      </figure>
+      <figure class="c-clouds_second">
+        <img src="~assets/img/cloud01.png" />
+      </figure>
     </div>
     <div v-if="weatherName === 'rain'" class="c-rain">
       <div></div>
@@ -201,8 +205,9 @@ export default {
     height: 100%;
     position: absolute;
     z-index: 10;
-    div {
-      width: 100%;
+    overflow: hidden;
+    figure {
+      width: auto;
       height: 100%;
       background-size: cover;
       margin: auto;
@@ -213,12 +218,36 @@ export default {
       bottom: 0;
       left: 0;
       margin: auto;
+      overflow: hidden;
+      width: 300%;
+      height: 100%;
+      img {
+        border-radius: 20px;
+        width: 100%;
+        height: 100%;
+      }
     }
     &_first {
-      background-image: url(~assets/img/cloud01.png);
+      animation-name: loop;
+      animation-duration: 20s;
+      animation-timing-function: linear;
+      animation-iteration-count: infinite;
     }
     &_second {
-      background-image: url(~assets/img/cloud02.png);
+      animation-name: loop;
+      animation-duration: 50s;
+      animation-timing-function: linear;
+      animation-iteration-count: infinite;
+    }
+    @keyframes loop {
+      0% {
+        -webkit-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
+      }
+      100% {
+        -webkit-transform: translate3d(-60%, 0, 0);
+        transform: translate3d(-60%, 0, 0);
+      }
     }
   }
   &-rain {
