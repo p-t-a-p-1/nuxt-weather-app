@@ -25,7 +25,7 @@
           <font-awesome-icon :icon="day.icon" class="-icon" />
           <p class="-weather">{{ day.weather[0].description }}</p>
           <p class="-temp">
-            気温<span class="-number">{{ day.main.temp }}°</span>
+            <span class="-number">{{ day.main.temp }}°</span>
           </p>
         </li>
       </ul>
@@ -109,6 +109,10 @@ export default {
             } else if (data.weather[0].main === 'Clear') {
               data.icon = 'sun'
             }
+
+            // 気温の四捨五入
+            data.main.temp = Math.floor(data.main.temp)
+
             fiveDayData.push(data)
           })
         })
@@ -194,9 +198,6 @@ export default {
             font-size: 2.4rem;
           }
         }
-        .-number {
-          margin-left: 10px;
-        }
       }
     }
   }
@@ -206,12 +207,12 @@ export default {
     position: absolute;
     z-index: 10;
     overflow: hidden;
+    border-radius: 20px;
     figure {
       width: auto;
       height: 100%;
       background-size: cover;
       margin: auto;
-      border-radius: 20px;
       position: absolute;
       top: 0;
       right: 0;
@@ -219,7 +220,7 @@ export default {
       left: 0;
       margin: auto;
       overflow: hidden;
-      width: 300%;
+      width: 250%;
       height: 100%;
       img {
         border-radius: 20px;
@@ -229,13 +230,13 @@ export default {
     }
     &_first {
       animation-name: loop;
-      animation-duration: 20s;
+      animation-duration: 30s;
       animation-timing-function: linear;
       animation-iteration-count: infinite;
     }
     &_second {
       animation-name: loop;
-      animation-duration: 50s;
+      animation-duration: 35s;
       animation-timing-function: linear;
       animation-iteration-count: infinite;
     }
