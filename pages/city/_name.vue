@@ -32,21 +32,16 @@
     </div>
 
     <div v-if="weatherName === 'clear'" class="c-clear">
-      <div class="-small"></div>
-      <div class="-small"></div>
-      <div class="-small"></div>
-      <div class="-small"></div>
-      <div class="-small"></div>
-      <div class="-medium"></div>
-      <div class="-medium"></div>
-      <div class="-medium"></div>
-      <div class="-medium"></div>
-      <div class="-medium"></div>
-      <div class="-large"></div>
-      <div class="-large"></div>
-      <div class="-large"></div>
-      <div class="-large"></div>
-      <div class="-large"></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
     </div>
     <div v-if="weatherName === 'clouds'" class="c-clouds">
       <figure class="c-clouds_first">
@@ -226,62 +221,6 @@ export default {
     left: 0;
     z-index: 10;
     overflow: hidden;
-    > div {
-      position: relative;
-      &::before {
-        content: '';
-        position: absolute;
-        width: 10px;
-        height: 10px;
-        z-index: 100;
-        transform: scale(0.2);
-      }
-      &.-small::before {
-        box-shadow: 20px 20px #fff;
-      }
-      &.-medium::before {
-        box-shadow: 20px 10px #fff176, 10px 20px #fff176, 20px 20px #fff,
-          30px 20px #fff176, 20px 30px #fff176;
-      }
-      &.-large::before {
-        box-shadow: 20px 0px #fdd835, 20px 10px #fff176, 0px 20px #fdd835,
-          10px 20px #fff176, 20px 20px #fff, 30px 20px #fff176,
-          40px 20px #fdd835, 20px 30px #fff176, 20px 40px #fdd835;
-      }
-      @for $i from 1 through 20 {
-        &:nth-of-type(#{$i}) {
-          top: percentage(random());
-          left: percentage(random());
-          animation-name: star;
-          animation-delay: random(10) + s;
-          animation-duration: random(10) + s;
-          animation-iteration-count: infinite;
-        }
-      }
-    }
-    @keyframes star {
-      0% {
-        opacity: 0;
-      }
-      5% {
-        opacity: 1;
-      }
-      10% {
-        opacity: 0;
-      }
-      55% {
-        opacity: 0;
-      }
-      60% {
-        opacity: 1;
-      }
-      95% {
-        opacity: 0;
-      }
-      100% {
-        opacity: 1;
-      }
-    }
   }
   &-clouds {
     width: 85%;
