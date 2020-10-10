@@ -1,5 +1,5 @@
 <template>
-  <div class="c-main_content">
+  <div class="c-main_content areaDetail">
     <div class="c-card" :class="weatherName">
       <div class="c-card_main">
         <div class="c-card_main_left">
