@@ -27,7 +27,7 @@
   &_logo {
     font-size: 4.5rem;
     font-weight: bold;
-    color: #333;
+    color: #778a99;
     &:hover {
       opacity: 0.8;
     }
