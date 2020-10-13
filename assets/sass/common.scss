@@ -64,3 +64,26 @@ ul {
 a {
   text-decoration: none;
 }
+
+// ページ遷移時のフェードイン・フェードアウト
+.page-enter-active,
+.page-leave-active {
+  transition: opacity 0.1s
+}
+.page-enter,
+.page-leave-active {
+  opacity: 0
+}
+
+.c {
+  &-main {
+    &_content {
+      margin: 100px auto;
+      height: 550px;
+      display: flex;
+      justify-content: center;
+      text-align: center;
+      position: relative;
+    }
+  }
+}
