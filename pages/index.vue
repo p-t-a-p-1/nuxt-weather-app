@@ -1,16 +1,20 @@
 <template>
   <div class="c-main_content top">
-    <h1 class="top_title">地名を入力してください</h1>
-    <div class="searchForm">
-      <input
-        v-model="searchStr"
-        type="text"
-        name="name"
-        class="searchForm_text"
-      />
-      <button type="button" @click="submit" class="searchForm_button">
-        <font-awesome-icon icon="search" class="-icon" />
-      </button>
+    <div class="">
+      <h1 class="top_title">地名を半角英字で入力してください</h1>
+      <div class="top_searchForm">
+        <input
+          v-model="searchStr"
+          type="text"
+          name="name"
+          class="top_searchForm_text"
+          placeholder="sapporo"
+          autocomplete="off"
+        />
+        <button type="button" @click="submit" class="top_searchForm_button">
+          <font-awesome-icon icon="search" class="-icon" />
+        </button>
+      </div>
     </div>
   </div>
 </template>
@@ -25,6 +29,9 @@ export default {
   methods: {
     // 地名検索
     submit() {
+      if (!this.searchStr.match(/^[A-Za-z0-9]*$/)) {
+        return false
+      }
       this.$router.push(`/city/${this.searchStr}`)
     },
   },
@@ -35,44 +42,51 @@ export default {
 .top {
   padding-top: 10vw;
   width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
   &_title {
     width: 100%;
     text-align: center;
     color: #778a99;
+    font-size: 25px;
   }
-  .searchForm {
+  &_searchForm {
+    padding-top: 24px;
     display: flex;
     justify-content: center;
     align-items: center;
+    margin: auto;
     width: 300px;
-    height: 50px;
     &_text {
+      outline: none;
+      width: 80%;
+      height: 100%;
       display: block;
       padding: 8px 16px;
       border: none;
-      border-radius: 2.5rem;
+      border-radius: 4px;
       box-shadow: 0 0 3rem 0 rgba(43, 86, 112, 0.1);
       color: inherit;
       font-size: 2rem;
       font-family: inherit;
-      width: 80%;
+      &::placeholder {
+        color: #d6dbe0;
+      }
     }
     &_button {
-      width: 20%;
-      height: 100%;
+      outline: none;
+      margin-left: 2%;
+      width: 18%;
+      height: 40px;
       cursor: pointer;
-      color: #778a99;
+      font-size: 18px;
+      border-radius: 4px;
       border: none;
-      background: none;
+      color: #7fbfff;
+      background-color: #fff;
       &:hover {
         opacity: 0.7;
         transition: 0.3s;
-        border: 1px solid #778a99;
-        border-radius: 100%;
+        color: #fff;
+        background-color: #7fbfff;
       }
     }
   }
