@@ -80,6 +80,9 @@
 export default {
   async asyncData({ params, error, $axios }) {
     try {
+      if (!params.name.match(/^[A-Za-z0-9]*$/)) {
+        this.error()
+      }
       let nowData = []
       const fiveDayData = []
       let weatherName = ''
@@ -102,7 +105,6 @@ export default {
           fiveDayResult.list.forEach((data) => {
             const checkedTime = data.dt_txt
             const weekDay = ['日', '月', '火', '水', '木', '金', '土']
-
             // 12時の天気情報のみ表示
             if (!checkedTime.match(/ 12:/)) {
               return
@@ -135,8 +137,7 @@ export default {
       }
     } catch (err) {
       error({
-        statusCode: err.response.status,
-        message: err.response.data.message,
+        statusCode: 404,
       })
     }
   },

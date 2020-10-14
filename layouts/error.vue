@@ -1,11 +1,10 @@
 <template>
-  <div class="c-main_content">
-    <div class="c-main_content_notfound">
-      <h1 class="-title">Page Not Found...</h1>
-      <h2 class="-subtitle">お探しのページが見つかりませんでした。</h2>
-      <ul class="-list">
-        <li class="-item">
-          <nuxt-link to="/" class="-link">ホーム</nuxt-link>
+  <div class="c-main_content error">
+    <div class="error_wrap">
+      <h2 class="error_wrap_subtitle">お探しの地域が見つかりませんでした。</h2>
+      <ul class="error_wrap_list">
+        <li class="-item -home">
+          <nuxt-link to="/" class="-link">検索画面へ</nuxt-link>
         </li>
         <li class="-item">
           <nuxt-link to="/" class="-link">札幌市の天気</nuxt-link>
@@ -27,31 +26,29 @@ export default {
 }
 </script>
 
-<style lang="scss">
-.c {
-  &-main {
-    &_content {
-      &_notfound {
-        .-title {
+<style lang="scss" scoped>
+.error {
+  &_wrap {
+    color: #778a99;
+    &_subtitle {
+      margin-top: 30px;
+      font-size: 2rem;
+    }
+    &_list {
+      margin-top: 30px;
+      .-item {
+        &.-home {
           font-size: 3rem;
+          font-weight: bold;
         }
-        .-subtitle {
-          margin-top: 30px;
-          font-size: 2rem;
+        &:nth-of-type(n + 2) {
+          margin-top: 10px;
         }
-        .-list {
-          margin-top: 30px;
-        }
-        .-item {
-          &:nth-of-type(n + 2) {
-            margin-top: 10px;
-          }
-        }
-        .-link {
-          color: #333;
-          &:hover {
-            opacity: 0.8;
-          }
+      }
+      .-link {
+        color: #778a99;
+        &:hover {
+          opacity: 0.8;
         }
       }
     }
