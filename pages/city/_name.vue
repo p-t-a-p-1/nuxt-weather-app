@@ -1,6 +1,7 @@
 <template>
   <div class="c-main_content areaDetail">
-    <div class="c-card" :class="weatherName">
+    <pre>{{ isDayTime }}</pre>
+    <div class="c-card" :class="{ day: isDayTime, night: !isDayTime }">
       <div class="c-card_main">
         <div class="c-card_main_left">
           <p class="-temp">{{ nowData.main.temp }}°</p>
@@ -83,6 +84,10 @@ export default {
       if (!params.name.match(/^[A-Za-z0-9]*$/)) {
         this.error()
       }
+      // 時間取得
+      const nowHours = new Date().getHours()
+      // 昼かどうか
+      const isDayTime = nowHours > 6 && nowHours < 17
       let nowData = []
       const fiveDayData = []
       let weatherName = ''
@@ -134,6 +139,7 @@ export default {
         nowData,
         fiveDayData,
         weatherName,
+        isDayTime,
       }
     } catch (err) {
       error({
@@ -146,16 +152,6 @@ export default {
 
 <style lang="scss" scoped>
 .c {
-  &-main {
-    &_content {
-      margin: 100px auto;
-      height: 550px;
-      display: flex;
-      justify-content: center;
-      text-align: center;
-      position: relative;
-    }
-  }
   &-card {
     padding: 100px 0;
     width: 85%;
@@ -165,8 +161,13 @@ export default {
     margin: 0;
     z-index: 5;
     color: #fff;
-    background-color: #102030;
     border-radius: 20px;
+    &.day {
+      background-color: #007acc;
+    }
+    &.night {
+      background-color: #102030;
+    }
     &_main {
       display: flex;
       justify-content: space-around;

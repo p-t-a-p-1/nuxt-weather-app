@@ -1,6 +1,5 @@
 <template>
   <div>
-    <Header />
     <main class="c-main">
       <Nuxt />
     </main>
@@ -15,12 +14,3 @@
   }
 }
 </style>
-
-<script>
-import Header from '@/components/Header.vue'
-export default {
-  components: {
-    Header,
-  },
-}
-</script>

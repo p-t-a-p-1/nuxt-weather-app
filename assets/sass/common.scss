@@ -78,10 +78,11 @@ a {
 .c {
   &-main {
     &_content {
-      margin: 100px auto;
+      margin: 150px auto;
       height: 550px;
       display: flex;
       justify-content: center;
+      align-items: center;
       text-align: center;
       position: relative;
     }
