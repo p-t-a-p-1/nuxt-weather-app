@@ -2,6 +2,10 @@
 This repository is Weather app with Nuxt.js.
 Using [OpenWeatherMap's Free Plan API](https://openweathermap.org/).
 
+# product site
+
+[https://boring-jepsen-b8033e.netlify.app/](https://boring-jepsen-b8033e.netlify.app/)
+
 # Image of the product
 
 ![IMG_5911-min](https://user-images.githubusercontent.com/51960141/93223848-75708c80-f7ab-11ea-96d9-ddd3ccd97aa0.png)
